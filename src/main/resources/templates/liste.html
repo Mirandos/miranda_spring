@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8" />
+      <title>Liste des Ordinateurs</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+   </head>
+   <body>
+      <h1>Ajouter un ordinateur <a th:href="@{/ajout.html}">ici</a></h1>
+      
+      <br/><br/>
+      <div>
+         <table border="1">
+            <tr>
+               <th>Numéro de série</th>
+               <th>Modèle</th>
+               <th>Date de sortie</th>
+			   <th>Status</th>
+            </tr>
+            <tr th:each="computer : ${computers}">
+               <td th:text="${computer.serialNumber}">...</td>
+               <td th:text="${computer.model}">...</td>
+               <td th:text="${#dates.format(computer.releaseDate, 'dd-MM-yyyy')}">...</td>
+			   <td th:text="${computer.status}">...</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>
